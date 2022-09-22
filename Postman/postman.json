@@ -1,0 +1,85 @@
+{
+  "item": [
+    {
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "path": [
+            ""
+          ],
+          "query": [
+            {
+              "key": "listToSort",
+              "value": "",
+              "equals": true,
+              "description": ""
+            }
+          ],
+          "host": "{{Sorting-Algorithms}}",
+          "raw": "{{Sorting-Algorithms}}"
+        }
+      },
+      "response": [
+        {
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "listToSort",
+                  "value": "",
+                  "equals": true,
+                  "description": ""
+                }
+              ],
+              "host": "{{Sorting-Algorithms}}",
+              "raw": "{{Sorting-Algorithms}}"
+            }
+          },
+          "_postman_previewlanguage": "json",
+          "code": 200,
+          "responseTime": 70,
+          "name": "bubbleSort-Example",
+          "header": [
+            {
+              "name": "date",
+              "key": "date",
+              "value": "Thu, 22 Sep 202200:40:22 GMT",
+              "description": "The date and time that the message was sent"
+            },
+            {
+              "name": "server",
+              "key": "server",
+              "value": "Apache-Coyote/1.1",
+              "description": "A name for the server"
+            },
+            {
+              "name": "transfer-encoding",
+              "key": "transfer-encoding",
+              "value": "chunked",
+              "description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+            },
+            {
+              "name": "content-type",
+              "key": "content-type",
+              "value": "application/json;charset\u003dUTF-8"
+            }
+          ],
+          "body": "{\n    \"itemsToSort\": [\n        0\n    ],\n    \"steps\": [\n        [\n            0\n        ]\n    ],\n    \"sorted\": [\n        0\n    ],\n    \"message\": \"\",\n    \"algorithm\": \"\",\n    \"numSteps\": 0,\n    \"timeTakenMillis\": 0\n}",
+          "status": "OK"
+        }
+      ],
+      "name": "bubbleSort"
+    }
+  ],
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "name": "SortingAlgorithmController-20220922004022",
+    "description": "SortingAlgorithmController"
+  }
+}
