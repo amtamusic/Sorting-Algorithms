@@ -21,28 +21,28 @@ public class SortingServiceTest {
     private SortingService sortingService;
 
     @Test
-    public void bubbleSortNullTest() {
-        assert(sortingService.bubbleSort(null, null, false) != null);
+    public void selectionSortNullTest() {
+        assert(sortingService.selectionSort(null, null, false) != null);
     }
 
     @Test
-    public void bubbleSortAscTest() {
-        assert(sortingService.bubbleSort(new ArrayList<>(Arrays.asList(5,7,6,11,1)), "asc", false).getSorted().toString().equals("[1, 5, 6, 7, 11]"));
+    public void selectionSortAscTest() {
+        assert(sortingService.selectionSort(new ArrayList<>(Arrays.asList(5,7,6,11,1)), "asc", false).getSorted().toString().equals("[1, 5, 6, 7, 11]"));
     }
 
     @Test
-    public void bubbleSortDescTest() {
-        assert(sortingService.bubbleSort(new ArrayList<>(Arrays.asList(5,7,6,11,1)), "desc", false).getSorted().toString().equals("[11, 7, 6, 5, 1]"));
+    public void selectionSortDescTest() {
+        assert(sortingService.selectionSort(new ArrayList<>(Arrays.asList(5,7,6,11,1)), "desc", false).getSorted().toString().equals("[11, 7, 6, 5, 1]"));
     }
 
     @Test
-    public void bubbleSortStepsTest() {
-        assert(sortingService.bubbleSort(new ArrayList<>(Arrays.asList(5,7,6,11,1)), "asc", true).getSteps().size() > 0);
+    public void selectionSortStepsTest() {
+        assert(sortingService.selectionSort(new ArrayList<>(Arrays.asList(5,7,6,11,1)), "asc", true).getSteps().size() > 0);
     }
 
     @Test
-    public void bubbleSortStepsNullTest() {
-        assert(sortingService.bubbleSort(new ArrayList<>(Arrays.asList(5,7,6,11,1)), "asc", false).getSteps() == null);
+    public void selectionSortStepsNullTest() {
+        assert(sortingService.selectionSort(new ArrayList<>(Arrays.asList(5,7,6,11,1)), "asc", false).getSteps() == null);
     }
 
 }
