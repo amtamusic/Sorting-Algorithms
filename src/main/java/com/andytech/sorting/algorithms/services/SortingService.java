@@ -7,4 +7,7 @@ import java.util.ArrayList;
 public interface SortingService {
     //Selection Sort
     SortingResponse<Integer> selectionSort(ArrayList<Integer>input, String order, boolean returnSteps);
+
+    //Bubble Sort
+    SortingResponse<Integer> bubbleSort(ArrayList<Integer>input, String order, boolean returnSteps);
 }
