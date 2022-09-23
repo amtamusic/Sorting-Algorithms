@@ -44,7 +44,7 @@
           "_postman_previewlanguage": "json",
           "code": 200,
           "responseTime": 70,
-          "name": "bubbleSort-Example",
+          "name": "selectionSort-Example",
           "header": [
             {
               "name": "date",
@@ -74,7 +74,7 @@
           "status": "OK"
         }
       ],
-      "name": "bubbleSort"
+      "name": "selectionSort"
     }
   ],
   "info": {

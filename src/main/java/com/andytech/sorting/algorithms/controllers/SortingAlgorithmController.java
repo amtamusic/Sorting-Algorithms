@@ -30,17 +30,17 @@ public class SortingAlgorithmController {
     private SortingService sortingService;
 
     /**
-     * This method is used to handle the request for the bubble sort algorithm.
+     * This method is used to handle the request for the selection sort algorithm.
      *
      * @param listToSort The list of integers to sort
      * @param order The order to sort the list in (asc or desc)
      * @param steps Whether to return the steps of the algorithm.
      * @return The response of the sorting algorithm
      */
-    @GetMapping("/sorting/bubble")
-    public ResponseEntity<SortingResponse<Integer>> bubbleSort(@RequestBody ArrayList<Integer>listToSort, @RequestParam(name="order",required = false,defaultValue = "asc") String order,@RequestParam(name="steps",defaultValue ="false")boolean steps)
+    @GetMapping("/sorting/selection")
+    public ResponseEntity<SortingResponse<Integer>> selectionSort(@RequestBody ArrayList<Integer>listToSort, @RequestParam(name="order",required = false,defaultValue = "asc") String order, @RequestParam(name="steps",defaultValue ="false")boolean steps)
     {
         logger.info("Input values: "+ listToSort.toString());
-        return new ResponseEntity<>(sortingService.bubbleSort(listToSort,order,steps), HttpStatus.OK);
+        return new ResponseEntity<>(sortingService.selectionSort(listToSort,order,steps), HttpStatus.OK);
     }
 }

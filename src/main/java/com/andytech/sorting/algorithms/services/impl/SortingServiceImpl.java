@@ -11,9 +11,9 @@ import java.util.List;
 @Service
 public class SortingServiceImpl implements SortingService {
 
-    //Bubble Sort
+    //Selection Sort
     @Override
-    public SortingResponse<Integer> bubbleSort(ArrayList<Integer> input, String order, boolean returnSteps) {
+    public SortingResponse<Integer> selectionSort(ArrayList<Integer> input, String order, boolean returnSteps) {
         //validate input
         if(input == null || input.size() == 0){
             return new SortingResponse<>(null,null,null,"Input is null or empty",null,null,null,null);
@@ -21,7 +21,7 @@ public class SortingServiceImpl implements SortingService {
         //Initialize response object
         SortingResponse<Integer> response = new SortingResponse<>();
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
-        response.setAlgorithm("Bubble Sort");
+        response.setAlgorithm("Selection Sort");
         response.setItemsToSort(copyList(input));
         steps.add(copyList(input));
         response.setNumSteps(0L);
