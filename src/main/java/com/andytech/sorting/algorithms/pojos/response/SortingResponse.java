@@ -21,6 +21,8 @@ public class SortingResponse<T> {
     private String message;
     private String algorithm;
     private Long numSteps;
+    private Long numSwaps;
     private Long timeTakenMillis;
     private Long inputSize;
+
 }
