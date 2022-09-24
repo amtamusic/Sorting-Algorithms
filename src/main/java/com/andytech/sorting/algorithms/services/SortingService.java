@@ -13,4 +13,7 @@ public interface SortingService {
 
     //Insertion Sort
     SortingResponse<Integer> insertionSort(ArrayList<Integer>input, String order, boolean returnSteps);
+
+    //Merge Sort
+    SortingResponse<Integer> mergeSort(ArrayList<Integer>input, String order, boolean returnSteps);
 }
