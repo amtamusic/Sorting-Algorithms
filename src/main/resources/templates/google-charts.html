@@ -12,26 +12,29 @@
 </head>
 <body>
 <div align="center" style="width: 1000px;">
-    <h2>Spring Boot Google Charts Example</h2>
+    <h1>Sorting Visualizer</h1>
     <div id="chart_div"></div>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <button type="button" class="btn btn-primary" onclick="drawColumnChart()">Next Step</button>
 </div>
 <script th:inline="javascript">
-        var real_data = /*[[${chartData}]]*/'noValue';
         var algorithm_name = /*[[${algorithm}]]*/'noValue';
+        var algorithm_step = /*[[${step}]]*/'noValue';
+        var algorithm_steps = /*[[${steps}]]*/'noValue';
+        console.log (algorithm_steps);
         $(document).ready(function() {
             google.charts.load('current', {
                 packages : [ 'corechart', 'bar' ]
             });
             google.charts.setOnLoadCallback(drawColumnChart);
-            google.charts.setOnLoadCallback(drawPieChart);
         });
         function drawColumnChart() {
+            var current_step = algorithm_steps[algorithm_step];
+            console.log ("Drawing Chart");
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Position');
             data.addColumn('number', 'Value');
-            Object.keys(real_data).forEach(function(key) {
-                data.addRow([ key, real_data[key] ]);
+            Object.keys(current_step).forEach(function(key) {
+                data.addRow([ key, current_step[key] ]);
             });
             var options = {
                 title : algorithm_name,
@@ -45,8 +48,14 @@
             var chart = new google.visualization.ColumnChart(document
                     .getElementById('chart_div'));
             chart.draw(data, options);
-        }
+            if (algorithm_step < algorithm_steps.length - 1) {
+                algorithm_step++;
+            }else
+            {
+                alert ("No more steps");
+            }
 
+        }
     </script>
 </body>
 </html>

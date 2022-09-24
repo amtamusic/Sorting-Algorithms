@@ -17,17 +17,33 @@ public class GraphicSortingController {
     private SortingService sortingService;
 
 
-    @GetMapping("/")
-    public String getPieChart(Model model) {
+    @GetMapping("/graph/selection")
+    public String graphSelectionSort(Model model) {
         String algorithm = "Selection Sort";
-        SortingResponse sortingResponse = sortingService.selectionSort(new ArrayList<>(Arrays.asList(5, 3, 2, 4, 1)), "asc", false);
+        SortingResponse sortingResponse = sortingService.selectionSort(new ArrayList<>(Arrays.asList(5, 3, 2, 4, 1)), "asc", true);
         Map<String, Integer> graphData = new TreeMap<>();
         for(int i =0 ; i < sortingResponse.getItemsToSort().size(); i++){
             graphData.put(i+"", (Integer) sortingResponse.getSorted().get(i));
         }
         model.addAttribute("algorithm", algorithm);
         model.addAttribute("chartData", graphData);
-        model.addAttribute("sortingResponse", sortingResponse);
+        model.addAttribute("steps", sortingResponse.getSteps());
+        model.addAttribute("step",0);
+        return "google-charts";
+    }
+
+    @GetMapping("/graph/bubble")
+    public String getBubbleSort(Model model) {
+        String algorithm = "Selection Sort";
+        SortingResponse sortingResponse = sortingService.selectionSort(new ArrayList<>(Arrays.asList(5, 3, 2, 4, 1)), "asc", true);
+        Map<String, Integer> graphData = new TreeMap<>();
+        for(int i =0 ; i < sortingResponse.getItemsToSort().size(); i++){
+            graphData.put(i+"", (Integer) sortingResponse.getSorted().get(i));
+        }
+        model.addAttribute("algorithm", algorithm);
+        model.addAttribute("chartData", graphData);
+        model.addAttribute("steps", sortingResponse.getSteps());
+        model.addAttribute("step",0);
         return "google-charts";
     }
 }
