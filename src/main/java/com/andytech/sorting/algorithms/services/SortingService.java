@@ -10,4 +10,7 @@ public interface SortingService {
 
     //Bubble Sort
     SortingResponse<Integer> bubbleSort(ArrayList<Integer>input, String order, boolean returnSteps);
+
+    //Insertion Sort
+    SortingResponse<Integer> insertionSort(ArrayList<Integer>input, String order, boolean returnSteps);
 }
