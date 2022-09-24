@@ -58,4 +58,19 @@ public class SortingAlgorithmController {
         logger.info("Input values: "+ listToSort.toString());
         return new ResponseEntity<>(sortingService.bubbleSort(listToSort,order,steps), HttpStatus.OK);
     }
+
+    /**
+     * This method is used to handle the request for the insertion sort algorithm.
+     *
+     * @param listToSort The list of integers to sort
+     * @param order The order to sort the list in (asc or desc)
+     * @param steps Whether to return the steps of the algorithm.
+     * @return The response of the sorting algorithm
+     */
+    @GetMapping("/sorting/insertion")
+    public ResponseEntity<SortingResponse<Integer>> insertionSort(@RequestBody ArrayList<Integer>listToSort, @RequestParam(name="order",required = false,defaultValue = "asc") String order, @RequestParam(name="steps",defaultValue ="false")boolean steps)
+    {
+        logger.info("Input values: "+ listToSort.toString());
+        return new ResponseEntity<>(sortingService.insertionSort(listToSort,order,steps), HttpStatus.OK);
+    }
 }
