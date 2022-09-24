@@ -8,10 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -37,7 +34,7 @@ public class SortingAlgorithmController {
      * @param steps Whether to return the steps of the algorithm.
      * @return The response of the sorting algorithm
      */
-    @GetMapping("/sorting/selection")
+    @PostMapping("/sorting/selection")
     public ResponseEntity<SortingResponse<Integer>> selectionSort(@RequestBody ArrayList<Integer>listToSort, @RequestParam(name="order",required = false,defaultValue = "asc") String order, @RequestParam(name="steps",defaultValue ="false")boolean steps)
     {
         logger.info("Input values: "+ listToSort.toString());
@@ -52,7 +49,7 @@ public class SortingAlgorithmController {
      * @param steps Whether to return the steps of the algorithm.
      * @return The response of the sorting algorithm
      */
-    @GetMapping("/sorting/bubble")
+    @PostMapping("/sorting/bubble")
     public ResponseEntity<SortingResponse<Integer>> bubbleSort(@RequestBody ArrayList<Integer>listToSort, @RequestParam(name="order",required = false,defaultValue = "asc") String order, @RequestParam(name="steps",defaultValue ="false")boolean steps)
     {
         logger.info("Input values: "+ listToSort.toString());
@@ -67,7 +64,7 @@ public class SortingAlgorithmController {
      * @param steps Whether to return the steps of the algorithm.
      * @return The response of the sorting algorithm
      */
-    @GetMapping("/sorting/insertion")
+    @PostMapping("/sorting/insertion")
     public ResponseEntity<SortingResponse<Integer>> insertionSort(@RequestBody ArrayList<Integer>listToSort, @RequestParam(name="order",required = false,defaultValue = "asc") String order, @RequestParam(name="steps",defaultValue ="false")boolean steps)
     {
         logger.info("Input values: "+ listToSort.toString());
@@ -82,7 +79,7 @@ public class SortingAlgorithmController {
      * @param steps Whether to return the steps of the algorithm.
      * @return The response of the sorting algorithm
      */
-    @GetMapping("/sorting/merge")
+    @PostMapping("/sorting/merge")
     public ResponseEntity<SortingResponse<Integer>> mergeSort(@RequestBody ArrayList<Integer>listToSort, @RequestParam(name="order",required = false,defaultValue = "asc") String order, @RequestParam(name="steps",defaultValue ="false")boolean steps)
     {
         logger.info("Input values: "+ listToSort.toString());
