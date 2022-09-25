@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Google Charts Example - Spring Boot</title>
+    <title>Sorting Visualizer</title>
     <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet"
@@ -11,10 +11,13 @@
             src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
-<div align="center" style="width: 1000px;">
-    <h1>Sorting Visualizer</h1>
-    <div id="chart_div"></div>
-    <button type="button" class="btn btn-primary" onclick="drawColumnChart()">Next Step</button>
+<h1>Sorting Visualizer</h1>
+<div align="center" style="width: 1000px;" th:each="data, iterstat: ${steps}">
+    <div th:id="${iterstat.index}" ></div>
+</div>
+<div>
+    <h2>Sorted Values</h2>
+    <h2 th:text="${sorted}"></h2>
 </div>
 <script th:inline="javascript">
         var algorithm_name = /*[[${algorithm}]]*/'noValue';
@@ -37,7 +40,7 @@
                 data.addRow([ key, current_step[key] ]);
             });
             var options = {
-                title : algorithm_name,
+                title : 'Step ' + (algorithm_step+1),
                 hAxis : {
                     title : 'Position',
                 },
@@ -46,13 +49,11 @@
                 }
             };
             var chart = new google.visualization.ColumnChart(document
-                    .getElementById('chart_div'));
+                    .getElementById(algorithm_step.toString()));
             chart.draw(data, options);
             if (algorithm_step < algorithm_steps.length - 1) {
                 algorithm_step++;
-            }else
-            {
-                alert ("No more steps");
+                drawColumnChart()
             }
 
         }
