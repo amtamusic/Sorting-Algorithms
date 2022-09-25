@@ -23,7 +23,12 @@ public class SortingServiceImpl implements SortingService {
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Selection Sort");
         response.setItemsToSort(copyList(input));
-        steps.add(copyList(input));
+        if (returnSteps) {
+            steps.add(copyList(input));
+        }else
+        {
+            steps.add(null);
+        }
         response.setNumSteps(0L);
         response.setNumSwaps(0L);
         //Record start time
@@ -47,7 +52,12 @@ public class SortingServiceImpl implements SortingService {
             }
 
             Collections.swap(input, index1, minMaxIndex);
-            steps.add(copyList(input));
+            if (returnSteps) {
+                steps.add(copyList(input));
+            }else
+            {
+                steps.add(null);
+            }
             response.setNumSwaps(response.getNumSwaps() + 1);
         }
         //Record end time
@@ -75,7 +85,12 @@ public class SortingServiceImpl implements SortingService {
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Bubble Sort");
         response.setItemsToSort(copyList(input));
-        steps.add(copyList(input));
+        if (returnSteps) {
+            steps.add(copyList(input));
+        }else
+        {
+            steps.add(null);
+        }
         response.setNumSteps(0L);
         response.setNumSwaps(0L);
         //Record start time
@@ -90,14 +105,24 @@ public class SortingServiceImpl implements SortingService {
                 if (order.equals("asc")) {
                     if (input.get(index) > input.get(index + 1)) {
                         Collections.swap(input, index, index + 1);
-                        steps.add(copyList(input));
+                        if (returnSteps) {
+                            steps.add(copyList(input));
+                        }else
+                        {
+                            steps.add(null);
+                        }
                         response.setNumSwaps(response.getNumSwaps() + 1);
                         swaps++;
                     }
                 } else {
                     if (input.get(index) < input.get(index + 1)) {
                         Collections.swap(input, index, index + 1);
-                        steps.add(copyList(input));
+                        if (returnSteps) {
+                            steps.add(copyList(input));
+                        }else
+                        {
+                            steps.add(null);
+                        }
                         response.setNumSwaps(response.getNumSwaps() + 1);
                         swaps++;
                     }
@@ -130,7 +155,12 @@ public class SortingServiceImpl implements SortingService {
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Insertion Sort");
         response.setItemsToSort(copyList(input));
-        steps.add(copyList(input));
+        if (returnSteps) {
+            steps.add(copyList(input));
+        }else
+        {
+            steps.add(null);
+        }
         response.setNumSteps(0L);
         response.setNumSwaps(0L);
         //Record start time
@@ -142,14 +172,24 @@ public class SortingServiceImpl implements SortingService {
                 if (order.equals("asc")) {
                     if (input.get(j) < input.get(j - 1)) {
                         Collections.swap(input, j, j - 1);
-                        steps.add(copyList(input));
+                        if (returnSteps) {
+                            steps.add(copyList(input));
+                        }else
+                        {
+                            steps.add(null);
+                        }
                         response.setNumSwaps(response.getNumSwaps() + 1);
                         swaps++;
                     }
                 } else {
                     if (input.get(j) > input.get(j - 1)) {
                         Collections.swap(input, j, j - 1);
-                        steps.add(copyList(input));
+                        if (returnSteps) {
+                            steps.add(copyList(input));
+                        }else
+                        {
+                            steps.add(null);
+                        }
                         response.setNumSwaps(response.getNumSwaps() + 1);
                         swaps++;
                     }
@@ -183,7 +223,12 @@ public class SortingServiceImpl implements SortingService {
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Insertion Sort");
         response.setItemsToSort(copyList(input));
-        steps.add(copyList(input));
+        if (returnSteps) {
+            steps.add(copyList(input));
+        }else
+        {
+            steps.add(null);
+        }
         response.setNumSteps(0L);
         response.setNumSwaps(0L);
         //Record start time
@@ -236,7 +281,12 @@ public class SortingServiceImpl implements SortingService {
                     j++;
                 }
             }
-            steps.add(copyList(input));
+            if (returnSteps) {
+                steps.add(copyList(input));
+            }else
+            {
+                steps.add(null);
+            }
             response.setNumSteps(response.getNumSteps() + 1);
             k++;
         }
@@ -276,7 +326,12 @@ public class SortingServiceImpl implements SortingService {
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Quick Sort");
         response.setItemsToSort(copyList(input));
-        steps.add(copyList(input));
+        if (returnSteps) {
+            steps.add(copyList(input));
+        }else
+        {
+            steps.add(null);
+        }
         response.setNumSteps(0L);
         response.setNumSwaps(0L);
         //Record start time
@@ -305,7 +360,12 @@ public class SortingServiceImpl implements SortingService {
                     int temp = input.get(i2);
                     input.set(i2, input.get(j));
                     input.set(j, temp);
-                    steps.add(copyList(input));
+                    if (returnSteps){
+                        steps.add(copyList(input));
+                    }else
+                    {
+                        steps.add(null);
+                    }
                     response.setNumSteps(response.getNumSteps() + 1);
                 }
             } else {
@@ -314,7 +374,12 @@ public class SortingServiceImpl implements SortingService {
                     int temp = input.get(i2);
                     input.set(i2, input.get(j));
                     input.set(j, temp);
-                    steps.add(copyList(input));
+                    if (returnSteps){
+                        steps.add(copyList(input));
+                    }else
+                    {
+                        steps.add(null);
+                    }
                     response.setNumSteps(response.getNumSteps() + 1);
                 }
             }
@@ -322,7 +387,12 @@ public class SortingServiceImpl implements SortingService {
         int temp = input.get(i2 + 1);
         input.set(i2 + 1, input.get(i1));
         input.set(i1, temp);
-        steps.add(copyList(input));
+        if (returnSteps) {
+            steps.add(copyList(input));
+        }else
+        {
+            steps.add(null);
+        }
         response.setNumSteps(response.getNumSteps() + 1);
         long end = System.currentTimeMillis();
         response.setSorted(input);
