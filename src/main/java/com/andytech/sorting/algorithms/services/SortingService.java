@@ -16,4 +16,7 @@ public interface SortingService {
 
     //Merge Sort
     SortingResponse<Integer> mergeSort(ArrayList<Integer>input, String order, boolean returnSteps);
+
+    //Quick Sort
+    SortingResponse<Integer> quickSort(ArrayList<Integer>input, String order, boolean returnSteps);
 }
