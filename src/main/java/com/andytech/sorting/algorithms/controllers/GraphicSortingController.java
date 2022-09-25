@@ -31,53 +31,55 @@ public class GraphicSortingController {
     }
     @PostMapping("/graph/selection")
     public String graphSelectionSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
-        logger.info("Input Array: "+ arrayString.getArray());
-        logger.info("Is Ascending: "+ arrayString.isAscending());
-        String algorithm = "Selection Sort";
+        printInputs(arrayString);
         SortingResponse sortingResponse = sortingService.selectionSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
-        model.addAttribute("algorithm", algorithm);
-        model.addAttribute("steps", sortingResponse.getSteps());
-        model.addAttribute("step",0);
-        model.addAttribute("sorted",sortingResponse.getSorted().toString());
+        setCommonModelAttributes(model,"Selection Sort",sortingResponse);
         return "google-charts";
     }
 
     @PostMapping("/graph/bubble")
     public String getBubbleSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
-        logger.info("Input Array: "+ arrayString.getArray());
-        logger.info("Is Ascending: "+ arrayString.isAscending());
-        String algorithm = "Bubble Sort";
+        printInputs(arrayString);
         SortingResponse sortingResponse = sortingService.bubbleSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
-        model.addAttribute("algorithm", algorithm);
-        model.addAttribute("steps", sortingResponse.getSteps());
-        model.addAttribute("step",0);
-        model.addAttribute("sorted",sortingResponse.getSorted().toString());
+        setCommonModelAttributes(model, "Bubble Sort", sortingResponse);
         return "google-charts";
     }
 
     @PostMapping("/graph/insertion")
     public String getInsertionSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
-        logger.info("Input Array: "+ arrayString.getArray());
-        logger.info("Is Ascending: "+ arrayString.isAscending());
-        String algorithm = "Insertion Sort";
+        printInputs(arrayString);
         SortingResponse sortingResponse = sortingService.insertionSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
-        model.addAttribute("algorithm", algorithm);
-        model.addAttribute("steps", sortingResponse.getSteps());
-        model.addAttribute("step",0);
-        model.addAttribute("sorted",sortingResponse.getSorted().toString());
+        setCommonModelAttributes(model, "Insertion Sort", sortingResponse);
         return "google-charts";
     }
 
     @PostMapping("/graph/merge")
     public String getMergeSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
+        printInputs(arrayString);
+        SortingResponse sortingResponse = sortingService.mergeSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
+        setCommonModelAttributes(model, "Merge Sort", sortingResponse);
+        return "google-charts";
+    }
+
+    @PostMapping("/graph/quick")
+    public String getQuickSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
+        printInputs(arrayString);
+        SortingResponse sortingResponse = sortingService.quickSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
+        setCommonModelAttributes(model, "Quick Sort", sortingResponse);
+        return "google-charts";
+    }
+
+    public void printInputs(ArrayString arrayString)
+    {
         logger.info("Input Array: "+ arrayString.getArray());
         logger.info("Is Ascending: "+ arrayString.isAscending());
-        String algorithm = "Merge Sort";
-        SortingResponse sortingResponse = sortingService.mergeSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
+    }
+
+    public void setCommonModelAttributes(Model model, String algorithm, SortingResponse sortingResponse)
+    {
         model.addAttribute("algorithm", algorithm);
         model.addAttribute("steps", sortingResponse.getSteps());
         model.addAttribute("step",0);
         model.addAttribute("sorted",sortingResponse.getSorted().toString());
-        return "google-charts";
     }
 }
