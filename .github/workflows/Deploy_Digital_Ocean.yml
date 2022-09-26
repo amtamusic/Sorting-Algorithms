@@ -43,14 +43,19 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/latest
       - name: Connect
         uses: appleboy/ssh-action@master
+        env:
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           passphrase: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: DOCKER_HUB_USERNAME,DOCKER_HUB_PASSWORD
           debug: true
           script: |
+            docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
             docker pull doomslayer92/sorting-algorithm-api-visualizer:latest
             docker rm -f terminal-commands
             docker run -d --name terminal-commands -p 8090:8090 hsmnzaydn/terminal-commands
