@@ -47,8 +47,11 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD}}
+          passphrase: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
+          key_path: ${{ secrets.SSH_KEY_PATH }}
+          debug: true
           script: |
             docker pull amtamusic/Sorting-Algorithm-API-Visualizer:latest
             docker rm -f terminal-commands
