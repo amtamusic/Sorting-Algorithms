@@ -56,6 +56,6 @@ jobs:
           debug: true
           script: |
             docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-            docker pull doomslayer92:latest
+            docker pull doomslayer92/latest:latest
             docker rm -f terminal-commands
             docker run -d --name terminal-commands -p 8090:8090 hsmnzaydn/terminal-commands
