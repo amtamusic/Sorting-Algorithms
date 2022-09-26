@@ -48,9 +48,10 @@ jobs:
           username: ${{ secrets.USERNAME }}
           passphrase: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           debug: true
           script: |
             docker pull amtamusic/Sorting-Algorithm-API-Visualizer:latest
             docker rm -f terminal-commands
             docker run -d --name terminal-commands -p 8090:8090 hsmnzaydn/terminal-commands
+      - name: Deploy
