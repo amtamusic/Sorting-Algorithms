@@ -51,6 +51,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           debug: true
           script: |
-            docker pull amtamusic/Sorting-Algorithm-API-Visualizer:latest
+            docker pull doomslayer92/sorting-algorithm-api-visualizer:latest
             docker rm -f terminal-commands
             docker run -d --name terminal-commands -p 8090:8090 hsmnzaydn/terminal-commands
