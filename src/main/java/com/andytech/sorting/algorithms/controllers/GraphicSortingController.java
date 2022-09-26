@@ -69,6 +69,24 @@ public class GraphicSortingController {
         return "google-charts";
     }
 
+    @PostMapping("/metrics/all")
+    public String getMetricsAll(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
+        printInputs(arrayString);
+        SortingResponse selectionResponse = sortingService.selectionSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", false);
+        SortingResponse bubbleResponse = sortingService.bubbleSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", false);
+        SortingResponse insertionResponse = sortingService.insertionSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", false);
+        SortingResponse mergeResponse = sortingService.mergeSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", false);
+        SortingResponse quickResponse = sortingService.quickSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", false);
+        ArrayList<SortingResponse>responses = new ArrayList<>();
+        responses.add(selectionResponse);
+        responses.add(bubbleResponse);
+        responses.add(insertionResponse);
+        responses.add(mergeResponse);
+        responses.add(quickResponse);
+        model.addAttribute("responses",responses);
+        return "metrics";
+    }
+
     public void printInputs(ArrayString arrayString)
     {
         logger.info("Input Array: "+ arrayString.getArray());

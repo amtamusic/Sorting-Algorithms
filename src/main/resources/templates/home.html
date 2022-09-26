@@ -122,6 +122,19 @@ input[type=checkbox]
     </div>
 </form>
 
+
+<form action="#" th:action="@{/metrics/all}" th:object="${arrayString}" method="post">
+    <div class="form-group required-control">
+        <h2>Compare All Algorithms</h2>
+        <input type="text" placeholder="Example: 1,2,3,4,5,..." th:field="*{array}" />
+        <input type="checkbox" name="ascending" th:checked="*{ascending}"/>
+        <span class="checkboxtext">
+              Ascending Order
+            </span>
+        <input type="submit" />
+    </div>
+</form>
+
 <div align="center" style="width: 1000px;" th:each="data, iterstat: ${steps}">
     <div th:id="${iterstat.index}" ></div>
 </div>
