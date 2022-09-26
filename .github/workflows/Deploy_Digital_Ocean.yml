@@ -54,4 +54,3 @@ jobs:
             docker pull amtamusic/Sorting-Algorithm-API-Visualizer:latest
             docker rm -f terminal-commands
             docker run -d --name terminal-commands -p 8090:8090 hsmnzaydn/terminal-commands
-      - name: Deploy
