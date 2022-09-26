@@ -16,12 +16,15 @@ public class SortingServiceImpl implements SortingService {
     public SortingResponse<Integer> selectionSort(ArrayList<Integer> input, String order, boolean returnSteps) {
         //validate input
         if (input == null || input.size() == 0) {
-            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null);
+            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null,"","","");
         }
         //Initialize response object
         SortingResponse<Integer> response = new SortingResponse<>();
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Selection Sort");
+        response.setBest("O(n^2)");
+        response.setAverage("O(n^2)");
+        response.setWorst("O(n^2)");
         response.setItemsToSort(copyList(input));
         if (returnSteps) {
             steps.add(copyList(input));
@@ -58,6 +61,7 @@ public class SortingServiceImpl implements SortingService {
             {
                 steps.add(null);
             }
+            response.setNumSteps(response.getNumSteps() + 1);
             response.setNumSwaps(response.getNumSwaps() + 1);
         }
         //Record end time
@@ -78,12 +82,15 @@ public class SortingServiceImpl implements SortingService {
     public SortingResponse<Integer> bubbleSort(ArrayList<Integer> input, String order, boolean returnSteps) {
         //validate input
         if (input == null || input.size() == 0) {
-            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null);
+            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null,"","","");
         }
         //Initialize response object
         SortingResponse<Integer> response = new SortingResponse<>();
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Bubble Sort");
+        response.setBest("O(n)");
+        response.setAverage("O(n^2)");
+        response.setWorst("O(n^2)");
         response.setItemsToSort(copyList(input));
         if (returnSteps) {
             steps.add(copyList(input));
@@ -148,12 +155,15 @@ public class SortingServiceImpl implements SortingService {
     public SortingResponse<Integer> insertionSort(ArrayList<Integer> input, String order, boolean returnSteps) {
         //validate input
         if (input == null || input.size() == 0) {
-            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null);
+            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null,"","","");
         }
         //Initialize response object
         SortingResponse<Integer> response = new SortingResponse<>();
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Insertion Sort");
+        response.setBest("O(n)");
+        response.setAverage("O(n^2)");
+        response.setWorst("O(n^2)");
         response.setItemsToSort(copyList(input));
         if (returnSteps) {
             steps.add(copyList(input));
@@ -216,12 +226,15 @@ public class SortingServiceImpl implements SortingService {
     public SortingResponse<Integer> mergeSort(ArrayList<Integer> input, String order, boolean returnSteps) {
         //validate input
         if (input == null || input.size() == 0) {
-            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null);
+            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null,"","","");
         }
         //Initialize response object
         SortingResponse<Integer> response = new SortingResponse<>();
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Insertion Sort");
+        response.setBest("O(n log n)");
+        response.setAverage("O(n log n)");
+        response.setWorst("O(n log n)");
         response.setItemsToSort(copyList(input));
         if (returnSteps) {
             steps.add(copyList(input));
@@ -319,12 +332,15 @@ public class SortingServiceImpl implements SortingService {
     public SortingResponse<Integer> quickSort(ArrayList<Integer> input, String order, boolean returnSteps) {
         //validate input
         if (input == null || input.size() == 0) {
-            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null);
+            return new SortingResponse<>(null, null, null, "Input is null or empty", null, null, null, null, null,"","","");
         }
         //Initialize response object
         SortingResponse<Integer> response = new SortingResponse<>();
         ArrayList<ArrayList<Integer>> steps = new ArrayList<>();
         response.setAlgorithm("Quick Sort");
+        response.setBest("O(n log n)");
+        response.setAverage("O(n log n)");
+        response.setWorst("O(n^2)");
         response.setItemsToSort(copyList(input));
         if (returnSteps) {
             steps.add(copyList(input));

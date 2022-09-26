@@ -24,5 +24,7 @@ public class SortingResponse<T> {
     private Long numSwaps;
     private Long timeTakenMillis;
     private Long inputSize;
-
+    private String best;
+    private String average;
+    private String worst;
 }
