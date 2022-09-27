@@ -9,12 +9,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
+
 @Controller
+@Validated
 public class GraphicSortingController {
 
     Logger logger = LoggerFactory.getLogger(GraphicSortingController.class);
@@ -30,7 +35,10 @@ public class GraphicSortingController {
         return "home";
     }
     @PostMapping("/graph/selection")
-    public String graphSelectionSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
+    public String graphSelectionSort(@Validated @ModelAttribute(value = "arrayString") ArrayString arrayString,BindingResult result,Model model) {
+        if (result.hasErrors()) {
+            return "home";
+        }
         printInputs(arrayString);
         SortingResponse sortingResponse = sortingService.selectionSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
         setCommonModelAttributes(model,"Selection Sort",sortingResponse);
@@ -38,7 +46,10 @@ public class GraphicSortingController {
     }
 
     @PostMapping("/graph/bubble")
-    public String getBubbleSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
+    public String getBubbleSort(@Validated @ModelAttribute(value = "arrayString") ArrayString arrayString,BindingResult result,Model model) {
+        if (result.hasErrors()) {
+            return "home";
+        }
         printInputs(arrayString);
         SortingResponse sortingResponse = sortingService.bubbleSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
         setCommonModelAttributes(model, "Bubble Sort", sortingResponse);
@@ -46,7 +57,10 @@ public class GraphicSortingController {
     }
 
     @PostMapping("/graph/insertion")
-    public String getInsertionSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
+    public String getInsertionSort(@Validated @ModelAttribute(value = "arrayString") ArrayString arrayString,BindingResult result,Model model) {
+        if (result.hasErrors()) {
+            return "home";
+        }
         printInputs(arrayString);
         SortingResponse sortingResponse = sortingService.insertionSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
         setCommonModelAttributes(model, "Insertion Sort", sortingResponse);
@@ -54,7 +68,10 @@ public class GraphicSortingController {
     }
 
     @PostMapping("/graph/merge")
-    public String getMergeSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
+    public String getMergeSort(@Validated @ModelAttribute(value = "arrayString") ArrayString arrayString,BindingResult result,Model model) {
+        if (result.hasErrors()) {
+            return "home";
+        }
         printInputs(arrayString);
         SortingResponse sortingResponse = sortingService.mergeSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
         setCommonModelAttributes(model, "Merge Sort", sortingResponse);
@@ -62,7 +79,10 @@ public class GraphicSortingController {
     }
 
     @PostMapping("/graph/quick")
-    public String getQuickSort(Model model,@ModelAttribute(value = "arrayString") ArrayString arrayString) {
+    public String getQuickSort(@Validated @ModelAttribute(value = "arrayString") ArrayString arrayString,BindingResult result,Model model) {
+        if (result.hasErrors()) {
+            return "home";
+        }
         printInputs(arrayString);
         SortingResponse sortingResponse = sortingService.quickSort(arrayString.getArrayInt(), arrayString.isAscending()?"asc":"desc", true);
         setCommonModelAttributes(model, "Quick Sort", sortingResponse);
@@ -95,6 +115,10 @@ public class GraphicSortingController {
 
     public void setCommonModelAttributes(Model model, String algorithm, SortingResponse sortingResponse)
     {
+        if(sortingResponse.getItemsToSort().size()<=100)
+        {
+            model.addAttribute("algorithm", algorithm+" Input Over 100 Too Large To Show Steps");
+        }
         model.addAttribute("algorithm", algorithm);
         model.addAttribute("steps", sortingResponse.getSteps());
         model.addAttribute("step",0);
