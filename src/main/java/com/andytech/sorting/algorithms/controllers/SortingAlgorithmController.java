@@ -26,6 +26,12 @@ public class SortingAlgorithmController {
     @Autowired
     private SortingService sortingService;
 
+    @GetMapping("/test")
+    public ResponseEntity<String> test()
+    {
+        return new ResponseEntity<>("OK", HttpStatus.OK);
+    }
+
     /**
      * This method is used to handle the request for the selection sort algorithm.
      *
